@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arima:wght@700&family=EB+Garamond:wght@500&family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+	<link rel="icon" type="image/x-icon" href="C:\Users\CMO\Downloads\WhatsApp Image 2022-06-24 at 6.25.07 PM.jpeg">
+    <style>
+      body {
+        background-image: url("https://cdn.givingcompass.org/wp-content/uploads/2018/12/20093246/Charity-vs-Philanthropy.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        margin-right: 15px;
+        margin-left: 65%;
+        margin-top: 8%;
+        margin-bottom: 5%;
+      }
+      #part1 {
+        background-color: rgba(52, 52, 52, 0.67);
+        border-radius: 10px;
+      }
+      h1 {
+        text-align: center;
+        color: darkblue;
+      }
+      label {
+        font-size: x-large;
+        color: brown;
+      }
+      input {
+        width: 385px;
+        height: 30px;
+        background-color: rgb(224, 224, 224);
+        border-radius: 10px;
+      }
+      textarea {
+        background-color: rgb(224, 224, 224);
+        border-radius: 10px;
+        border: inset;
+        border-color: dimgray;
+      }
+      #sign {
+        margin-left: 60px;
+        margin-right: 40px;
+      }
+    </style>
+  </head>
+  <body style="font-family: EB garamond">
+    <div id="part1">
+      <h1>SIGN UP</h1>
+	  <center>
+      <small style="color: darksalmon"
+        >Sign up to be a part of this organization...!!</small
+      ></center>
+      <br />
+      <hr style="color: black" />
+      <form style="margin-left: 31px">
+        <label>Username:</label><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Username"
+          required
+        /><br />
+        <label>Email: </label><br />
+        <input
+          type="text"
+          id="mail"
+          name="ml"
+          placeholder="Email"
+          required
+        /><br />
+        <label>Mobile number: </label><br />
+        <input
+          type="text"
+          id="numm"
+          name="num"
+          placeholder="Mobile number"
+          required
+        /><br />
+        <label>Address: </label><br />
+        <textarea
+          id="addr"
+          name="adds"
+          rows="6"
+          cols="50"
+          placeholder="Address"
+          required
+        ></textarea>
+        <br />
+
+        <label>Password:</label><br />
+        <input
+          type="password"
+          id="pass"
+          name="ps"
+          placeholder="Password"
+          required
+        /><br />
+        <label>Retype Password:</label><br />
+        <input
+          type="password"
+          id="repass"
+          name="rps"
+          placeholder="Retype Password"
+          required
+        /><br />
+        <br />
+        <br />
+        <div id="sign">
+          <input
+            type="button"
+            id="chck"
+            style="
+              background-color: rgb(9, 44, 237);
+              color: white;
+              width: 250px;
+              height: 40px;
+              font-size: large;
+              border-radius: 5px;
+            "
+            value="Sign Up"
+            onclick="validate()"
+          />
+          <br />
+          <br />
+		  <center>
+          <hr style="color:black">
+		  </center>
+        </form>
+        
+
+          <p>Already have an account?</p>
+          
+          <input  
+            style="
+              background-color: rgba(45, 164, 18, 0.822);
+              color: Black;
+              font-size: large;
+              height: 30px;
+              width: 150px;
+              margin-left: 70px;
+              border-radius: 5px;
+            "
+            type="button"
+            id="r1"
+            name="sign"
+            value="Sign In"
+            onclick="check()"
+          />
+		  <br>
+		  <br>
+      </form>
+        </div>
+    
+
+    <script>
+      function validate() {
+        var pno = document.getElementById("numm").value;
+        var nam = document.getElementById("name").value;
+        var text = document.getElementById("pass").value;
+        var em = document.getElementById("mail").value;
+        var txt = document.getElementById("repass").value;
+        var flag1 = 0;
+        var flag2 = 0;
+        let spChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        let no = /\d/;
+        let c = "@";
+
+        for (let i = 0; i < nam.length; i++) {
+          if (nam[i] < 9 && nam[i] > 0) {
+            alert("Only alphabets are allowed in Username!");
+            break;
+          }
+        }
+        for (let j = 0; j < pno.length; j++) {
+          if (!(pno[j] < 9 && pno[j] < 0)) {
+            {
+              alert("Mobile number is not valid!");
+              break;
+            }
+            if (pno.length != 10) {
+              alert("Mobile number is not valid!");
+              break;
+            }
+          }
+        }
+        if (em.includes(c)) {
+          {
+            if (
+              em.match(/com/g) ||
+              em.match(/in/g) ||
+              em.match(/edu/g) ||
+              em.match(/net/g)
+            )
+              flag2 = 1;
+          }
+        }
+        if (text.length >= 8) {
+          if (spChars.test(text) && no.test(text)) flag1 = 1;
+        }
+        if (flag2 === 0) {
+          alert("Invalid Email address!");
+        }
+        if (flag1 === 0) {
+          alert("Password doesn't match the requirements!");
+        }
+        if (text !== txt) {
+          alert("Password Mismatched! Please enter the same password");
+        }
+		
+      }
+
+      function check()
+      {
+        location.assign("signin pro.html");
+
+      }
+    </script>
+  </body>
+</html>
